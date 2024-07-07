@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mavaliu S.A.S - Servicios TI</title>
+    <link rel="stylesheet" href="../CSS/estilo_index_p1.css"> <!-- Enlace de estilos CSS  -->
+	<link rel="icon" href="../IMAGENES/Diseno logo MAVALIU M.png" type="image/x-icon">
+	<script src="./JS/scripts.js"></script> <!-- Enlace de estilos JS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> <!-- Enlace de librería de iconos y fuentes  -->
+</head>
+<body>
+    <header>
+	    <div class="logo">
+            <img src="../IMAGENES/Logo PNG.png" alt="Logo de Mavaliu S.A.S">
+        </div>
+        <nav>
+            <ul class="navlist">
+                <li><a href="../index.html" class="menu-link">Inicio</a></li>
+                <li><a href="../analitica datos/analitica.html" class="menu-link">Analitica de datos y Big Data</a></li>
+				<li><a href="../consultorias/consultorias.html" class="menu-link">Consultorias TIC</a></li>
+                <li><a href="../sistemas gestion calidad/gestion_calidad.html" class="menu-link">Sistemas de Gestión de Calidad</a></li>
+				<li><a href="../normativa gubernamental/normativa.html" class="menu-link">Normativa Gubernamental</a></li>
+                <li><a href="../SSA/SSA.html" class="menu-link">SSA</a></li>
+                <li><a href="../contacto/contacto.html" class="menu-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <h1>Bienvenidos a Mavaliu S.A.S</h1>
+        <p>Somos líderes en brindar soluciones de TI para tu organización.</p>
+    </section>
+		
+	</header>
+		
+		 <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Ponte en contacto con nosotros:</p>
+        <address>
+            Email: gerencia@mavaliu.com<br>
+            Teléfono: 3244040568<br>
+            Dirección: Marinilla, Antioquia
+        </address>
+    </section>
+
+<!-- Formulario de Contacto -->
+<form id="contact-form">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+	
+	<label for="telefono">Telefono:</label>
+    <input type="text" id="phone" required>
+
+    <label for="message">Mensaje:</label>
+    <textarea id="message" required></textarea>
+
+    <button type="submit" id="submit">Enviar</button>
+</form>
+
+<br>
+    <footer>
+        <p>&copy; 2023 Mavaliu S.A.S. Todos los derechos reservados.</p>
+    </footer>
+	    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("contact-form");
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const messageInput = document.getElementById("message");
+            const submitButton = document.getElementById("submit");
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                // validación de campos y el envío del formulario, hacerlo útil
+
+                //alerta para indicar que el formulario fue enviado
+                alert("Formulario enviado con éxito");
+            });
+        });
+		</script>
+		
+		<script>
+		document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("contact-form");
+        // Resto de tu código JavaScript
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            // Resto de tu código de manejo de formulario
+
+            // Envío de los datos al servidor PHP
+            fetch("send_email.php", {
+                method: "POST",
+                body: new FormData(form)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Mensaje enviado con éxito");
+                } else {
+                    alert("Error al enviar el mensaje");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+				});
+			});
+		});
+	</script>
+
+	</body>
+</html>
